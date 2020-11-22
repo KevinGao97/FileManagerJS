@@ -1,1 +1,1 @@
-# js-library-gaozi2
+# js-library-gaozi2 (FileManagerJS)
