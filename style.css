@@ -4,6 +4,13 @@
   margin: 30px;
   padding: 20px;
 }
+.defaultHeader {
+  margin: 20px;
+}
+
+.defaultParagraph {
+  margin: 20px;
+}
 
 .defaultLabel {
   font-size: smaller;

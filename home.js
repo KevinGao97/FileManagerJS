@@ -41,7 +41,7 @@ function newNestedFolderSection() {
   addNestedFolderFormTag.id = 'addNestedFolderForm';
   const label = document.createElement('label');
   label.className = 'defaultLabel';
-  label.innerHTML = 'Add a new Folder ("root" for root dir):';
+  label.innerHTML = 'Add a new Folder ("root" for base dir):';
   addNestedFolderFormTag.appendChild(label);
 
   const UserDesiredFolderName = document.createElement('input');
