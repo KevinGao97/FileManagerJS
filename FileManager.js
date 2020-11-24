@@ -166,7 +166,7 @@ function addFile(file) {
 
   //Push file object to the global files array
   files.push(file);
-  console.log(files);
+  //console.log(files);
 
   const fileInfo = document.createTextNode(
     file.userSpecifiedName +
@@ -191,7 +191,7 @@ function addNestedFolder(folder) {
 
   //Add the folder object to the folders array
   folders.push(folder);
-  console.log(folders);
+  //console.log(folders);
 
   const folderName = document.createTextNode(folder.name);
   li.appendChild(folderName);
@@ -221,7 +221,7 @@ function renameFolder(oldFolderName, newFolderName) {
 
     //Rename the element in the DOM
     EleName.firstChild.textContent = newFolderName;
-    console.log('Renamed Folder');
+    //console.log('Renamed Folder');
   } else {
     alert('The Folder does not exist');
     return false;
@@ -252,7 +252,7 @@ function deleteElement(userElementName) {
     //Remove element from DOM
     checkEleName.remove();
 
-    console.log('Removed Folder/File');
+    //console.log('Removed Folder/File');
   } else {
     alert('The Folder or File does not exist');
     return false;

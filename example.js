@@ -7,6 +7,7 @@ function createInitalExample() {
   const vacationFolder = new Folder('Vacation', 'Pictures');
   const rockFolder = new Folder('Rock', 'Music');
   const homeworkFolder = new Folder('Homework', 'Documents');
+  const biologyFolder = new Folder('Biology', 'Homework');
 
   const pictureFile1 = new File(
     'picture.png',
@@ -27,15 +28,37 @@ function createInitalExample() {
     'Vacation'
   );
 
+  const reportFile = new File(
+    'report.txt',
+    203432,
+    'Biology Report',
+    'Biology'
+  );
+  const proposalFile = new File(
+    'proposal.pdf',
+    37068,
+    'Biology Report',
+    'Homework'
+  );
+
+  const essayFile = new File('essay.docx', 506356, 'Course Essay', 'Homework');
+
+  const songFile = new File('rockSong1.mp3', 90786, 'Rock song sample', 'Rock');
+
   addNestedFolder(pictureFolder);
   addNestedFolder(documentFolder);
   addNestedFolder(musicFolder);
   addNestedFolder(vacationFolder);
   addNestedFolder(rockFolder);
   addNestedFolder(homeworkFolder);
+  addNestedFolder(biologyFolder);
   addFile(pictureFile1);
   addFile(pictureFile2);
   addFile(pictureFile3);
+  addFile(reportFile);
+  addFile(essayFile);
+  addFile(proposalFile);
+  addFile(songFile);
 }
 
 createInitalExample();
