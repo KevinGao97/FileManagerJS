@@ -41,6 +41,18 @@
   color: black;
 }
 
+.root li.folder:before {
+  content: url('img/folder.png');
+  padding-right: 2px;
+  margin: 2px;
+}
+
+.root li.file:before {
+  content: url('img/file.png');
+  padding-right: 2px;
+  margin: 2px;
+}
+
 input[type='text'] {
   padding: 5px 5px;
   margin: 3px;

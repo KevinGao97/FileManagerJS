@@ -13,19 +13,22 @@ function createInitalExample() {
     'picture.png',
     100223,
     'VacationPicture1',
-    'Vacation'
+    'Vacation',
+    'purple'
   );
   const pictureFile2 = new File(
     'picture2.jpeg',
     78601,
     'AnOldPicture',
-    'Pictures'
+    'Pictures',
+    'green'
   );
   const pictureFile3 = new File(
     'picture3.png',
     120778,
     'VacationPicture2',
-    'Vacation'
+    'Vacation',
+    'purple'
   );
 
   const reportFile = new File(
@@ -60,5 +63,5 @@ function createInitalExample() {
   addFile(proposalFile);
   addFile(songFile);
 }
-
+initFileManagerJS();
 createInitalExample();
