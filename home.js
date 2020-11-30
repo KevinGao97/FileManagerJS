@@ -23,6 +23,11 @@ function newFileSection() {
   userDesiredFolder.id = 'folderId';
   userDesiredFolder.placeholder = 'Add to Folder Name';
   addNewFileForm.appendChild(userDesiredFolder);
+  const userDesiredColor = document.createElement('input');
+  userDesiredColor.type = 'text';
+  userDesiredColor.id = 'fileColor';
+  userDesiredColor.placeholder = 'File color';
+  addNewFileForm.appendChild(userDesiredColor);
   const addFileButton = document.createElement('button');
   addFileButton.className = 'addBtn';
   addFileButton.type = 'submit';
@@ -74,18 +79,18 @@ function renameElementSection() {
   renameElementForm.id = 'renameElementDivForm';
   const label = document.createElement('label');
   label.className = 'defaultLabel';
-  label.innerHTML = 'Rename a Folder:';
+  label.innerHTML = 'Rename a File/Folder:';
   renameElementForm.appendChild(label);
 
   const oldElementName = document.createElement('input');
   oldElementName.type = 'text';
   oldElementName.id = 'oldElementNameId';
-  oldElementName.placeholder = 'Old Folder Name';
+  oldElementName.placeholder = 'Old File/Folder Name';
   renameElementForm.appendChild(oldElementName);
   const newElementName = document.createElement('input');
   newElementName.type = 'text';
   newElementName.id = 'newElementNameId';
-  newElementName.placeholder = 'New Folder Name';
+  newElementName.placeholder = 'New File/Folder Name';
   renameElementForm.appendChild(newElementName);
   const submitRenameRequest = document.createElement('button');
   submitRenameRequest.className = 'addBtn';
@@ -125,14 +130,35 @@ function deleteElementSection() {
   document.getElementsByTagName('body')[0].appendChild(deleteElementDiv);
 }
 
-//Create Div and inital Ul Tag
-function initFileManagerJS() {
-  const mainDiv = document.createElement('div');
-  mainDiv.className = 'main';
-  const rootUl = document.createElement('ul');
-  rootUl.className = 'root';
-  mainDiv.appendChild(rootUl);
-  document.getElementsByTagName('body')[0].appendChild(mainDiv);
+// Change Color of a file
+function fileColorChange() {
+  const fileColorChange = document.createElement('div');
+  fileColorChange.id = 'fileColorChange';
+  const fileColorChangeForm = document.createElement('form');
+  fileColorChangeForm.id = 'fileColorChangeForm';
+  const label = document.createElement('label');
+  label.className = 'defaultLabel';
+  label.innerHTML = 'Change Color of a File:';
+  fileColorChangeForm.appendChild(label);
+
+  const oldFileColor = document.createElement('input');
+  oldFileColor.type = 'text';
+  oldFileColor.id = 'oldFileColorId';
+  oldFileColor.placeholder = 'File Name';
+  fileColorChangeForm.appendChild(oldFileColor);
+  const newFileColor = document.createElement('input');
+  newFileColor.type = 'text';
+  newFileColor.id = 'newFileColorId';
+  newFileColor.placeholder = 'New File Color';
+  fileColorChangeForm.appendChild(newFileColor);
+  const submitRenameRequest = document.createElement('button');
+  submitRenameRequest.className = 'addBtn';
+  submitRenameRequest.type = 'submit';
+  submitRenameRequest.appendChild(document.createTextNode('Change'));
+  fileColorChangeForm.appendChild(submitRenameRequest);
+  fileColorChange.appendChild(fileColorChangeForm);
+
+  document.getElementsByTagName('body')[0].appendChild(fileColorChange);
 }
 
 //Create User Interaction input fields, buttons and main div
@@ -140,4 +166,4 @@ newFileSection();
 newNestedFolderSection();
 renameElementSection();
 deleteElementSection();
-initFileManagerJS();
+fileColorChange();

@@ -7,11 +7,12 @@ const files = [];
 const folders = [];
 
 //File Constructor
-const File = function (fileName, size, userSpecifiedName, folderId) {
+const File = function (fileName, size, userSpecifiedName, folderId, color) {
   this.userSpecifiedName = userSpecifiedName;
   this.fileName = fileName;
   this.size = size;
   this.folderId = folderId;
+  this.color = color;
 
   //set the file ID
   this.fileGlobalId = numberOfFiles;
@@ -49,6 +50,11 @@ if (deleteAnElementForm) {
   deleteAnElementForm.addEventListener('submit', getDeletedElementInfo);
 }
 
+const changeFileColorForm = document.getElementById('fileColorChangeForm');
+if (changeFileColorForm) {
+  changeFileColorForm.addEventListener('submit', getChangedFileColorInfo);
+}
+
 /* Functions which do not manipulate the DOM */
 
 //Handle user events
@@ -67,6 +73,17 @@ function getUploadedFileInfo(e) {
     const fileSize = document.getElementById('userFile').files[0].size;
     const userSpecifiedName = document.getElementById('fileName').value;
     const folderId = document.getElementById('folderId').value;
+    let fileColor = document.getElementById('fileColor').value;
+    console.log(fileColor);
+    //If the user left the File color input blank, defaults to the black color
+    if (fileColor === '') {
+      fileColor = 'black';
+    }
+    //Checks if the user entered color is a valid color by calling the helper function
+    if (checkColor(fileColor) == false) {
+      alert('The following is not a valid color');
+      return;
+    }
 
     //Checks if the folder being added to exists
     const checkFolderExists = document.getElementById(folderId);
@@ -80,7 +97,8 @@ function getUploadedFileInfo(e) {
       fileActualName,
       fileSize,
       userSpecifiedName,
-      folderId
+      folderId,
+      fileColor
     );
 
     //Calls the addFile function to add file to the DOM
@@ -90,6 +108,7 @@ function getUploadedFileInfo(e) {
     document.getElementById('userFile').value = '';
     document.getElementById('fileName').value = '';
     document.getElementById('folderId').value = '';
+    document.getElementById('fileColor').value = '';
   }
 }
 
@@ -158,7 +177,39 @@ function getDeletedElementInfo(e) {
   document.getElementById('elementName').value = '';
 }
 
+function getChangedFileColorInfo(e) {
+  e.preventDefault();
+
+  if (document.getElementById('oldFileColorId').value === '') {
+    alert('Cannot have an empty file name');
+    return false;
+  } else if (document.getElementById('newFileColorId').value === '') {
+    alert('Cannot have an empty new folder/file name');
+    return false;
+  } else {
+    const oldEleName = document.getElementById('oldFileColorId').value;
+    const newEleName = document.getElementById('newFileColorId').value;
+    //console.log(oldEleName);
+    //console.log(newEleName);
+
+    changeFileColor(oldEleName, newEleName);
+  }
+  //Clear the Input Fields
+  document.getElementById('oldFileColorId').value = '';
+  document.getElementById('newFileColorId').value = '';
+}
+
 /* DOM Manipulation Functions */
+
+//Create inital Div and  Ul Tag necessary for the library to display contents properly
+function initFileManagerJS() {
+  const mainDiv = document.createElement('div');
+  mainDiv.className = 'main';
+  const rootUl = document.createElement('ul');
+  rootUl.className = 'root';
+  mainDiv.appendChild(rootUl);
+  document.getElementsByTagName('body')[0].appendChild(mainDiv);
+}
 
 //Add an Individual File to a folder
 function addFile(file) {
@@ -168,18 +219,15 @@ function addFile(file) {
   files.push(file);
   //console.log(files);
 
-  const fileInfo = document.createTextNode(
-    file.userSpecifiedName +
-      ' --- ' +
-      file.fileName +
-      ' --- ' +
-      fileSizeConverter(file.size)
-  );
+  const fileInfo = document.createTextNode(file.userSpecifiedName);
+  const fileOriginalName = document.createTextNode('---' + file.fileName);
 
   li.appendChild(fileInfo);
+  li.appendChild(fileOriginalName);
 
   li.id = file.userSpecifiedName;
   li.className = 'file';
+  li.style.color = file.color;
 
   document.getElementById('folder' + file.folderId).appendChild(li);
 }
@@ -198,6 +246,7 @@ function addNestedFolder(folder) {
   li.appendChild(ul);
   li.id = folder.name;
   ul.className = 'style';
+  li.className = 'folder';
 
   ul.id = 'folder' + folder.name;
   //console.log(folders);
@@ -210,20 +259,50 @@ function addNestedFolder(folder) {
   addCollapsingEffect();
 }
 
+//Adds in the expanding and expanding effect of folders during an onClick Event using the slideToggle effect in JQuery
+function addCollapsingEffect() {
+  $('li > ul').each(function () {
+    const parent = $(this).parent();
+    $(this).parent().wrapInner("<a href='#' />");
+    parent.append($(this));
+    $(this)
+      .parent()
+      .find('a')
+      .on('click', function (e) {
+        e.preventDefault();
+        $(this).siblings('ul').slideToggle('slow');
+      });
+  });
+}
+
 //Rename a folder
-function renameFolder(oldFolderName, newFolderName) {
-  const EleName = document.getElementById(oldFolderName);
-  if (EleName) {
+function renameFolder(oldElementName, newElementName) {
+  const EleName = document.getElementById(oldElementName);
+  //If the Element is a folder
+  if (EleName && EleName.className == 'folder') {
     //Update 'name' property in folders global array
     const index = folders.findIndex(folder => folder.name === EleName.id);
-    folders[index].name = newFolderName;
+    folders[index].name = newElementName;
     //console.log(folders);
 
     //Rename the element in the DOM
-    EleName.firstChild.textContent = newFolderName;
+    EleName.firstChild.textContent = newElementName;
     //console.log('Renamed Folder');
+
+    //If the Element is a file
+  } else if (EleName && EleName.className == 'file') {
+    //Update 'name' property in files global array
+    const index = files.findIndex(
+      file => file.userSpecifiedName === EleName.id
+    );
+    files[index].userSpecifiedName = newElementName;
+    console.log(files);
+
+    //Rename the element in the DOM
+    EleName.firstChild.textContent = newElementName;
+    //console.log('renaming file');
   } else {
-    alert('The Folder does not exist');
+    alert('The File/Folder does not exist');
     return false;
   }
 }
@@ -259,29 +338,29 @@ function deleteElement(userElementName) {
   }
 }
 
-/*  Helper Functions  */
-
-//Adds in the expanding and expanding effect of folders during an onClick Event
-function addCollapsingEffect() {
-  $('li > ul').each(function () {
-    $(this).parent().addClass('folder');
-    const main = $(this).parent();
-
-    $(this).parent().wrapInner("<a href='#' />");
-    main.append($(this));
-    main.find('a').on('click', function (e) {
-      e.preventDefault();
-      $(this).siblings('ul').slideToggle('slow');
-    });
-  });
+//Change the color of a file
+function changeFileColor(fileName, newColor) {
+  const checkEleName = document.getElementById(fileName);
+  if (checkEleName) {
+    //Checks if the user entered color is a valid color by calling the helper function
+    if (checkColor(newColor) == false) {
+      alert('The new specified color is not a valid color');
+      return;
+    } else {
+      checkEleName.style.color = newColor;
+    }
+  } else {
+    alert('The file does not exist');
+    return;
+  }
 }
 
-//Convert an user uploaded file size to B, KB or MB
-function fileSizeConverter(fileSize) {
-  const input = Math.floor(Math.log(fileSize) / Math.log(1024));
-  return (
-    (fileSize / Math.pow(1024, input)).toFixed(2) * 1 +
-    ' ' +
-    ['B', 'KB', 'MB'][input]
-  );
+/*  Helper Functions  */
+
+//Checks if a user specified color is a valid CSS color
+//Citiation: https://stackoverflow.com/questions/48484767/javascript-check-if-string-is-valid-css-color
+function checkColor(inputColor) {
+  var opt = new Option().style;
+  opt.color = inputColor;
+  return opt.color == inputColor;
 }
