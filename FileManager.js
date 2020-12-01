@@ -55,6 +55,11 @@ if (changeFileColorForm) {
   changeFileColorForm.addEventListener('submit', getChangedFileColorInfo);
 }
 
+const moveElementForm = document.getElementById('moveElementForm');
+if (moveElementForm) {
+  moveElementForm.addEventListener('submit', getMoveElementFormInfo);
+}
+
 /* Functions which do not manipulate the DOM */
 
 //Handle user events
@@ -199,6 +204,29 @@ function getChangedFileColorInfo(e) {
   document.getElementById('newFileColorId').value = '';
 }
 
+function getMoveElementFormInfo(e) {
+  e.preventDefault();
+
+  if (document.getElementById('moveElementId').value === '') {
+    alert('Cannot have an empty file/folder name');
+    return false;
+  } else if (document.getElementById('newFolderLocationId').value === '') {
+    alert('Cannot have an empty new folder name');
+    return false;
+  } else {
+    const eleOldLocationName = document.getElementById('moveElementId').value;
+    const eleNewLocationName = document.getElementById('newFolderLocationId')
+      .value;
+    //console.log(oldEleName);
+    //console.log(newEleName);
+
+    moveElements(eleOldLocationName, eleNewLocationName);
+  }
+  //Clear the Input Fields
+  document.getElementById('moveElementId').value = '';
+  document.getElementById('newFolderLocationId').value = '';
+}
+
 /* DOM Manipulation Functions */
 
 //Create inital Div and  Ul Tag necessary for the library to display contents properly
@@ -207,6 +235,7 @@ function initFileManagerJS() {
   mainDiv.className = 'main';
   const rootUl = document.createElement('ul');
   rootUl.className = 'root';
+  rootUl.id = 'root';
   mainDiv.appendChild(rootUl);
   document.getElementsByTagName('body')[0].appendChild(mainDiv);
 }
@@ -228,8 +257,11 @@ function addFile(file) {
   li.id = file.userSpecifiedName;
   li.className = 'file';
   li.style.color = file.color;
-
-  document.getElementById('folder' + file.folderId).appendChild(li);
+  if (file.folderId === 'root') {
+    document.getElementsByClassName('root')[0].appendChild(li);
+  } else {
+    document.getElementById('folder' + file.folderId).appendChild(li);
+  }
 }
 
 //Adds a folder inside another Folder
@@ -312,25 +344,15 @@ function deleteElement(userElementName) {
   const checkEleName = document.getElementById(userElementName);
   if (checkEleName) {
     //Update folders/files global array to remove specified element
-    if (checkEleName.className == 'folder') {
-      const indexRemoved = folders.findIndex(
-        folder => folder.name === checkEleName.id
-      );
-      folders.splice(indexRemoved, 1);
 
-      //console.log(folders);
-    } else if (checkEleName.className == 'file') {
-      const indexRemoved = files.findIndex(
-        files => files.userSpecifiedName === checkEleName.id
-      );
-      files.splice(indexRemoved, 1);
-
-      //console.log(files);
-    }
+    const backUpElement = checkEleName;
+    console.log(backUpElement);
 
     //Remove element from DOM
     checkEleName.remove();
 
+    //Save the Element in case User wants to restore
+    restoreElement(backUpElement);
     //console.log('Removed Folder/File');
   } else {
     alert('The Folder or File does not exist');
@@ -347,12 +369,123 @@ function changeFileColor(fileName, newColor) {
       alert('The new specified color is not a valid color');
       return;
     } else {
+      //Update 'color' property in files global array
+      const index = files.findIndex(
+        file => file.userSpecifiedName === checkEleName.id
+      );
+      files[index].color = newColor;
+      console.log(files);
+
+      //Update the file Color in the DOM
       checkEleName.style.color = newColor;
     }
   } else {
     alert('The file does not exist');
     return;
   }
+}
+
+//Move around a folder or file in the file structure
+function moveElements(elementName, folderName) {
+  const checkEleName = document.getElementById(elementName);
+  const checkFolderName = document.getElementById(folderName);
+  if (checkEleName && checkFolderName) {
+    //Update the file/folder new location in the DOM
+
+    //If the user wanted to move to the root directory
+    if (document.getElementById('folder' + folderName) == null) {
+      document.getElementById('root').appendChild(checkEleName);
+      //If the user wanted to move to another folder
+    } else {
+      document.getElementById('folder' + folderName).appendChild(checkEleName);
+    }
+    console.log('Moved element');
+  } else if (!checkEleName && checkFolderName) {
+    alert('The file/folder does not exist');
+    return;
+  } else {
+    alert('The folder does not exist');
+    return;
+  }
+}
+
+//Restores or permanently deletes an Element
+function restoreElement(elementName) {
+  //Creates the initial Restore Location at the bottom
+  const tempDiv = document.createElement('div');
+  const undoBtn = document.createElement('button');
+  undoBtn.appendChild(document.createTextNode('Undo Delete'));
+  const deletePerm = document.createElement('button');
+  deletePerm.appendChild(document.createTextNode('Delete Forever'));
+  //console.log(elementName.id);
+  //console.log(elementName);
+  tempDiv.appendChild(document.createTextNode(elementName.id));
+  tempDiv.appendChild(undoBtn);
+  tempDiv.appendChild(deletePerm);
+  document.getElementsByClassName('main')[0].appendChild(tempDiv);
+  //console.log(files);
+  //Delete permanently an element
+  deletePerm.onclick = () => {
+    //Remove that element from their respective arrays
+    if (elementName.className == 'folder') {
+      const indexRemoved = folders.findIndex(
+        folder => folder.name === elementName.id
+      );
+      folders.splice(indexRemoved, 1);
+
+      console.log(folders);
+    } else if (elementName.className == 'file') {
+      const indexRemoved = files.findIndex(
+        files => files.userSpecifiedName === elementName.id
+      );
+      files.splice(indexRemoved, 1);
+
+      console.log(files);
+    }
+    tempDiv.remove();
+  };
+
+  //Restores an element back after being deleted
+  undoBtn.onclick = () => {
+    //Add the folder back to it's previous location
+    if (elementName.className == 'folder') {
+      const index = folders.findIndex(folder => folder.name === elementName.id);
+      parentFolderName = folders[index].parentFolderName;
+
+      //If the folder was a 'root' folder
+      if (document.getElementById('folder' + parentFolderName) == null) {
+        document.getElementById('root').appendChild(elementName);
+        //If the folder was nested inside another folder
+      } else {
+        document
+          .getElementById('folder' + parentFolderName)
+          .appendChild(elementName);
+      }
+
+      //console.log(folders);
+      //Add the file back to it's previous location
+    } else if (elementName.className == 'file') {
+      const index = files.findIndex(
+        files => files.userSpecifiedName === elementName.id
+      );
+      parentFolderName = files[index].folderId;
+      //console.log(parentFolderName);
+
+      //console.log(files);
+
+      //If the file was at the 'root' folder
+      if (document.getElementById('folder' + parentFolderName) == null) {
+        document.getElementById('root').appendChild(elementName);
+        //If the file was inside another folder before
+      } else {
+        document
+          .getElementById('folder' + parentFolderName)
+          .appendChild(elementName);
+      }
+    }
+
+    tempDiv.remove();
+  };
 }
 
 /*  Helper Functions  */

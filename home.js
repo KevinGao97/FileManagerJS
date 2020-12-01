@@ -151,19 +151,51 @@ function fileColorChange() {
   newFileColor.id = 'newFileColorId';
   newFileColor.placeholder = 'New File Color';
   fileColorChangeForm.appendChild(newFileColor);
-  const submitRenameRequest = document.createElement('button');
-  submitRenameRequest.className = 'addBtn';
-  submitRenameRequest.type = 'submit';
-  submitRenameRequest.appendChild(document.createTextNode('Change'));
-  fileColorChangeForm.appendChild(submitRenameRequest);
+  const submitRequest = document.createElement('button');
+  submitRequest.className = 'addBtn';
+  submitRequest.type = 'submit';
+  submitRequest.appendChild(document.createTextNode('Change'));
+  fileColorChangeForm.appendChild(submitRequest);
   fileColorChange.appendChild(fileColorChangeForm);
 
   document.getElementsByTagName('body')[0].appendChild(fileColorChange);
 }
 
+// Move a File/Folder to another location
+function moveElement() {
+  const moveElement = document.createElement('div');
+  moveElement.id = 'moveElement';
+  const moveElementForm = document.createElement('form');
+  moveElementForm.id = 'moveElementForm';
+  const label = document.createElement('label');
+  label.className = 'defaultLabel';
+  label.innerHTML = 'Move a File/Folder to another Folder:';
+  moveElementForm.appendChild(label);
+
+  const moveElementId = document.createElement('input');
+  moveElementId.type = 'text';
+  moveElementId.id = 'moveElementId';
+  moveElementId.placeholder = 'File/Folder Name';
+  moveElementForm.appendChild(moveElementId);
+  const newFolderLocation = document.createElement('input');
+  newFolderLocation.type = 'text';
+  newFolderLocation.id = 'newFolderLocationId';
+  newFolderLocation.placeholder = 'New Folder Name';
+  moveElementForm.appendChild(newFolderLocation);
+  const submitRequest = document.createElement('button');
+  submitRequest.className = 'addBtn';
+  submitRequest.type = 'submit';
+  submitRequest.appendChild(document.createTextNode('Change'));
+  moveElementForm.appendChild(submitRequest);
+  moveElement.appendChild(moveElementForm);
+
+  document.getElementsByTagName('body')[0].appendChild(moveElement);
+}
+
 //Create User Interaction input fields, buttons and main div
 newFileSection();
+fileColorChange();
 newNestedFolderSection();
 renameElementSection();
 deleteElementSection();
-fileColorChange();
+moveElement();

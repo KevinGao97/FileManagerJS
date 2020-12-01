@@ -40,7 +40,7 @@ function createInitalExample() {
   const proposalFile = new File(
     'proposal.pdf',
     37068,
-    'Biology Report',
+    'Biology Report2',
     'Homework'
   );
 
