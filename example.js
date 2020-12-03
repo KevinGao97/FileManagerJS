@@ -1,29 +1,29 @@
 /* Create an Initial Example */
 
 function createInitalExample() {
-  const pictureFolder = new Folder('Pictures', 'root');
-  const musicFolder = new Folder('Music', 'root');
-  const documentFolder = new Folder('Documents', 'root');
-  const vacationFolder = new Folder('Vacation', 'Pictures');
-  const rockFolder = new Folder('Rock', 'Music');
-  const homeworkFolder = new Folder('Homework', 'Documents');
-  const biologyFolder = new Folder('Biology', 'Homework');
+  const pictureFolder = FolderCreator('Pictures', 'root');
+  const musicFolder = FolderCreator('Music', 'root');
+  const documentFolder = FolderCreator('Documents', 'root');
+  const vacationFolder = FolderCreator('Vacation', 'Pictures');
+  const rockFolder = FolderCreator('Rock', 'Music');
+  const homeworkFolder = FolderCreator('Homework', 'Documents');
+  const biologyFolder = FolderCreator('Biology', 'Homework');
 
-  const pictureFile1 = new File(
+  const pictureFile1 = new FileCreator(
     'picture.png',
     100223,
     'VacationPicture1',
     'Vacation',
     'purple'
   );
-  const pictureFile2 = new File(
+  const pictureFile2 = new FileCreator(
     'picture2.jpeg',
     78601,
     'AnOldPicture',
     'Pictures',
     'green'
   );
-  const pictureFile3 = new File(
+  const pictureFile3 = new FileCreator(
     'picture3.png',
     120778,
     'VacationPicture2',
@@ -31,22 +31,32 @@ function createInitalExample() {
     'purple'
   );
 
-  const reportFile = new File(
+  const reportFile = new FileCreator(
     'report.txt',
     203432,
     'Biology Report',
     'Biology'
   );
-  const proposalFile = new File(
+  const proposalFile = new FileCreator(
     'proposal.pdf',
     37068,
     'Biology Report2',
     'Homework'
   );
 
-  const essayFile = new File('essay.docx', 506356, 'Course Essay', 'Homework');
+  const essayFile = new FileCreator(
+    'essay.docx',
+    506356,
+    'Course Essay',
+    'Homework'
+  );
 
-  const songFile = new File('rockSong1.mp3', 90786, 'Rock song sample', 'Rock');
+  const songFile = new FileCreator(
+    'rockSong1.mp3',
+    90786,
+    'Rock song sample',
+    'Rock'
+  );
 
   addNestedFolder(pictureFolder);
   addNestedFolder(documentFolder);
