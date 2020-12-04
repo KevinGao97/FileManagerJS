@@ -1,6 +1,6 @@
 /* Create an Initial Example */
 
-function createInitalExample() {
+function createCloudExample() {
   const pictureFolder = FolderCreator('Pictures', 'root');
   const musicFolder = FolderCreator('Music', 'root');
   const documentFolder = FolderCreator('Documents', 'root');
@@ -74,4 +74,4 @@ function createInitalExample() {
   addFile(songFile);
 }
 initFileManagerJS();
-createInitalExample();
+createCloudExample();
