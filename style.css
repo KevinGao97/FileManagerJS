@@ -1,3 +1,8 @@
+html,
+body {
+  margin: 0;
+}
+
 .main {
   border-radius: 2px;
   box-shadow: 0 0 50px rgba(114, 152, 221, 0.335);
@@ -54,9 +59,15 @@
 }
 
 input[type='text'] {
-  padding: 5px 5px;
+  border: 2px solid #8d8e8f;
   margin: 3px;
+  padding: 3px;
   box-sizing: border-box;
+  transition: 0.5s;
+}
+input[type='text']:focus {
+  box-shadow: 0 0 7px 0 #14213d;
+  border-color: #14213d;
 }
 
 button {
@@ -81,7 +92,74 @@ button:hover {
   background-color: #e9e9e9;
 }
 
-button:active {
+.navBar {
+  margin: 0;
+  background: #70a288;
+}
+
+.navBar ul {
+  margin: 1px;
+  padding: 1px;
+  line-height: 1;
+  display: block;
+}
+
+.navBar ul li {
+  display: inline-block;
+}
+
+.navBar ul li a {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
   position: relative;
-  top: 1px;
+  color: #020402;
+  text-decoration: none;
+  display: block;
+  padding: 15px 25px;
+  transition: color 0.25s;
+}
+
+.Logo {
+  color: #284b63;
+}
+
+.navBar ul li a:after {
+  height: 7px;
+  width: 7px;
+  right: 1px;
+  top: 1rem;
+  content: '';
+  position: absolute;
+  background: #212227;
+  opacity: 0.5;
+}
+.navBar ul li a:before {
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0;
+  background: #000100;
+  content: '';
+  display: block;
+  position: absolute;
+  transition: 0.25s;
+}
+
+.navBar ul li a:hover {
+  color: white;
+}
+.navBar ul li a:hover:before {
+  width: 100%;
+}
+
+.defaultImage {
+  width: 50%;
+  margin: 20px;
+}
+
+.defaultParagraph {
+  margin: 20px;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
 }
