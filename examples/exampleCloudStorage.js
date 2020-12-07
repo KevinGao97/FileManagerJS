@@ -1,4 +1,4 @@
-/* Create an Initial Example */
+/* Create a Cloud Storage Example */
 
 function createCloudExample() {
   const pictureFolder = FolderCreator('Pictures', 'root');

@@ -13,6 +13,10 @@ body {
   margin: 20px;
 }
 
+.defaultHeader2 {
+  margin: 30px;
+}
+
 .defaultParagraph {
   margin: 20px;
 }
@@ -156,6 +160,16 @@ button:hover {
 .defaultImage {
   width: 50%;
   margin: 20px;
+}
+
+.defaultImage2 {
+  width: 40%;
+  margin: 20px;
+}
+
+.defaultImage3 {
+  width: 50%;
+  margin: 30px;
 }
 
 .defaultParagraph {
