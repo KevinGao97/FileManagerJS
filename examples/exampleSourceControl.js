@@ -1,4 +1,4 @@
-/* Create an Initial Example */
+/* Create a Source Control Example */
 
 function createSourceExample() {
   const mainAppFolder = FolderCreator('application', 'root');
