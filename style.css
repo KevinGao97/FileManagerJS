@@ -10,15 +10,15 @@ body {
   padding: 20px;
 }
 .defaultHeader {
-  margin: 20px;
+  margin: 1rem;
 }
 
 .defaultHeader2 {
-  margin: 30px;
+  margin: 1rem;
 }
 
 .defaultParagraph {
-  margin: 20px;
+  margin: 1rem;
 }
 
 .defaultLabel {
@@ -147,7 +147,7 @@ button:hover {
   content: '';
   display: block;
   position: absolute;
-  transition: 0.25s;
+  transition: 0.35s;
 }
 
 .navBar ul li a:hover {
@@ -159,21 +159,26 @@ button:hover {
 
 .defaultImage {
   width: 50%;
-  margin: 20px;
+  margin: 1rem;
 }
 
 .defaultImage2 {
   width: 40%;
-  margin: 20px;
+  margin: 1rem;
 }
 
 .defaultImage3 {
   width: 50%;
-  margin: 30px;
+  margin: 1rem;
 }
 
 .defaultParagraph {
-  margin: 20px;
+  margin: 1rem;
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
+}
+
+.defaultXMP {
+  margin: 1rem;
+  color: #148bf3;
 }

@@ -103,11 +103,6 @@
       if (fileColor === '') {
         fileColor = 'black';
       }
-      //Checks if the user entered color is a valid color by calling the helper function
-      if (checkColor(fileColor) == false) {
-        alert('The following is not a valid color');
-        return;
-      }
 
       //Checks if the folder being added to exists
       const checkFolderExists = document.getElementById(folderId);
@@ -385,21 +380,14 @@
   function changeFileColor(fileName, newColor) {
     const checkEleName = document.getElementById(fileName);
     if (checkEleName) {
-      //Checks if the user entered color is a valid color by calling the helper function
-      if (checkColor(newColor) == false) {
-        alert('The new specified color is not a valid color');
-        return;
-      } else {
-        //Update 'color' property in files global array
-        const index = files.findIndex(
-          file => file.userSpecifiedName === checkEleName.id
-        );
-        files[index].color = newColor;
-        console.log(files);
+      //Update 'color' property in files global array
+      const index = files.findIndex(
+        file => file.userSpecifiedName === checkEleName.id
+      );
+      files[index].color = newColor;
 
-        //Update the file Color in the DOM
-        checkEleName.style.color = newColor;
-      }
+      //Update the file Color in the DOM
+      checkEleName.style.color = newColor;
     } else {
       alert('The file does not exist');
       return;
@@ -513,16 +501,6 @@
     };
   }
 
-  /*  Helper Functions  */
-
-  //Checks if a user specified color is a valid CSS color
-  //Citiation: https://stackoverflow.com/questions/48484767/javascript-check-if-string-is-valid-css-color
-  function checkColor(inputColor) {
-    var opt = new Option().style;
-    opt.color = inputColor;
-    return opt.color == inputColor;
-  }
-
   //Add the FileManagerJS functions to the window object
   global.FolderCreator = global.FolderCreator || FolderCreator;
   global.FileCreator = global.FileCreator || FileCreator;
@@ -548,5 +526,4 @@
   global.changeFileColor = global.changeFileColor || changeFileColor;
   global.moveElements = global.moveElements || moveElements;
   global.restoreElement = global.restoreElement || restoreElement;
-  global.checkColor = global.checkColor || checkColor;
 })(window, window.document, $);
