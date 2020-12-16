@@ -31,73 +31,75 @@
 
   
   <div>
-    <h3 class="defaultHeader">Upload a New File </h3>
+    <div class="cardLayout">
+      <h3 class="defaultHeader">Upload a New File </h3>
+      <p class="defaultParagraph">This UI Component allows users to upload any file type to the File Manager.</p>
+      <h5 class="defaultHeader"><u>Inputs</u></h5>
+      <p class="defaultParagraph"><b>Choose File:</b> Upload the file binary.</p>
+      <p class="defaultParagraph"><b>File Name:</b> Choose the desired Name.</p>
+      <p class="defaultParagraph"><b>Add to Folder Name:</b> Add the file to the base('root') directory or to an existing folder by entering its name.</p>
+      <p class="defaultParagraph"><b>File Color:</b> Choose a valid CSS color, if this is left empty, the color is defaulted to black.</p>
+      <img class="defaultImage" src='../img/uploadFile.PNG'>
+    </div>
     
-    <p class="defaultParagraph">This UI Component allows users to upload any file type to the File Manager.</p>
-    <h5 class="defaultHeader"><u>Inputs</u></h5>
-    <p class="defaultParagraph"><b>Choose File:</b> Upload the file binary.</p>
-    <p class="defaultParagraph"><b>File Name:</b> Choose the desired Name.</p>
-    <p class="defaultParagraph"><b>Add to Folder Name:</b> Add the file to the base('root') directory or to an existing folder by entering its name.</p>
-    <p class="defaultParagraph"><b>File Color:</b> Choose a valid CSS color, if this is left empty, the color is defaulted to black.</p>
-    <img class="defaultImage" src='../img/uploadFile.PNG'>
     
     
   </div>
-  <div>
+  <div class="cardLayout">
     <h3 class="defaultHeader">Change Color of a File </h3>
     <p class="defaultParagraph">This UI Component allows users to change the color of any File, provided that it is a valid css color.</p>
     <h5 class="defaultHeader"><u>Inputs</u></h5>
     <p class="defaultParagraph"><b>File Name:</b> Choose the existing file by its name.</p>
     <p class="defaultParagraph"><b>New File Color:</b> Choose a a new valid CSS color.</p>
-    <img class="defaultImage" src='../img/colorChangeFile.PNG'>
+    <img class="defaultImage3" src='../img/colorChangeFile.PNG'>
   
   </div>
 
-  <div>
+  <div class="cardLayout">
     <h3 class="defaultHeader">Add a New Folder </h3>
     <p class="defaultParagraph">This UI Component allows users to add a new folder to the File Manager. Users may add folders to the base('root') directory or inside another existing folder.</p>
     <h5 class="defaultHeader"><u>Inputs</u></h5>
     <p class="defaultParagraph"><b>Folder Name:</b> The existing folder name.</p>
     <p class="defaultParagraph"><b>Parent Folder Name:</b> The existing parent folder name ('root' for the top-level folder).</p>
-    <img class="defaultImage" src='../img/AddFolder.PNG'>
+    <img class="defaultImage3" src='../img/AddFolder.PNG'>
   </div>
 
-  <div>
+  <div class="cardLayout">
     <h3 class="defaultHeader">Rename a File or Folder </h3>
     <p class="defaultParagraph">This UI Component allows users to rename an existing file or folder to another name. </p>
     <h5 class="defaultHeader"><u>Inputs</u></h5>
     <p class="defaultParagraph"><b>Old File/Folder Name:</b> The existing file or folder name.</p>
     <p class="defaultParagraph"><b>New File/Folder Name:</b> The new desired name for the file or folder.</p>
-    <img class="defaultImage" src='../img/renameElement.PNG'>
+    <img class="defaultImage3" src='../img/renameElement.PNG'>
   </div>
 
 
-  <div>
+  <div class="cardLayout">
     <h3 class="defaultHeader">Move a File or Folder to another Folder </h3>
     <p class="defaultParagraph">This UI Component allows users to move an existing file or folder to another folder or into the top level, base('root') directory.</p>
     <h5 class="defaultHeader"><u>Inputs</u></h5>
     <p class="defaultParagraph"><b>File/Folder Name:</b> The existing file or folder name.</p>
     <p class="defaultParagraph"><b>Folder Name:</b> The existing folder name that the user wishes to place their contents (file or folder) in.</p>
-    <img class="defaultImage" src='../img/moveElement.PNG'>
+    <img class="defaultImage3" src='../img/moveElement.PNG'>
   </div>
 
   
-  <div>
+  <div class="cardLayout">
     <h3 class="defaultHeader">Deleting a File or Folder </h3>
     <p class="defaultParagraph">This UI Component allows users to delete an existing file or folder. The deleted file/folder is moved into the 'trash' section at the bottom of the File Manager.</p>
     <h5 class="defaultHeader"><u>Inputs</u></h5>
     <p class="defaultParagraph"><b>File/Folder Name:</b> The existing file or folder name.</p>
-    <img class="defaultImage" src='../img/deleteElement.PNG'>
+    <img class="defaultImage3" src='../img/deleteElement.PNG'>
   </div>
   
-  <div>
+  <div class="cardLayout">
     <h3 class="defaultHeader">Restoring a File or Folder </h3>
     <p class="defaultParagraph">This UI Component gives users an option of restoring or deleting permanently items in their 'trash' section.</p>
     <p class="defaultParagraph">A restored File or Folder will be added back to their original location in the File Manager, with its contents intact(if applicable).</p>
     <h5 class="defaultHeader"><u>Inputs</u></h5>
     <p class="defaultParagraph"><b>Undo Delete:</b> Restores back either the file or folder to its original location.</p>
     <p class="defaultParagraph"><b>Delete Forever:</b> Deletes permanently the file or folder.</p>
-    <img class="defaultImage" src='../img/restoreElement.PNG'>
+    <img class="defaultImage2" src='../img/restoreElement.PNG'>
   </div>
 
  
