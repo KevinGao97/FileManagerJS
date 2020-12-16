@@ -6,9 +6,24 @@ body {
 .main {
   border-radius: 2px;
   box-shadow: 0 0 50px rgba(114, 152, 221, 0.335);
-  margin: 30px;
-  padding: 20px;
+  margin: 1rem;
+  padding: 1rem;
 }
+
+.cardLayout {
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem rgba(62, 62, 63, 0.335);
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.cardLayout2 {
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem rgba(97, 97, 240, 0.404);
+  margin: 1rem;
+  padding: 1rem;
+}
+
 .defaultHeader {
   margin: 1rem;
 }
@@ -158,17 +173,17 @@ button:hover {
 }
 
 .defaultImage {
-  width: 50%;
+  width: 60%;
   margin: 1rem;
 }
 
 .defaultImage2 {
-  width: 40%;
+  width: 20%;
   margin: 1rem;
 }
 
 .defaultImage3 {
-  width: 50%;
+  width: 36%;
   margin: 1rem;
 }
 
