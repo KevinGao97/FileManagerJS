@@ -174,7 +174,7 @@
       const oldEleName = document.getElementById('oldElementNameId').value;
       const newEleName = document.getElementById('newElementNameId').value;
 
-      renameFolder(oldEleName, newEleName);
+      renameElement(oldEleName, newEleName);
     }
     //Clear the Input Fields
     document.getElementById('oldElementNameId').value = '';
@@ -324,7 +324,7 @@
   }
 
   //Rename a folder
-  function renameFolder(oldElementName, newElementName) {
+  function renameElement(oldElementName, newElementName) {
     const EleName = document.getElementById(oldElementName);
     //If the Element is a folder
     if (EleName && EleName.className == 'folder') {
@@ -521,7 +521,7 @@
   global.addNestedFolder = global.addNestedFolder || addNestedFolder;
   global.addCollapsingEffect =
     global.addCollapsingEffect || addCollapsingEffect;
-  global.renameFolder = global.renameFolder || renameFolder;
+  global.renameElement = global.renameElement || renameElement;
   global.deleteElement = global.deleteElement || deleteElement;
   global.changeFileColor = global.changeFileColor || changeFileColor;
   global.moveElements = global.moveElements || moveElements;
