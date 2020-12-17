@@ -1,5 +1,11 @@
 function loadPicture() {
   const loadPicMainDiv = document.createElement('div');
+  const footer = document.createElement('footer');
+  const footerParagraph = document.createElement('p');
+  footerParagraph.className = 'defaultParagraph';
+  footerParagraph.textContent = 'FileManagerJS v1.0. Created by: Kevin Gao';
+  footer.appendChild(footerParagraph);
+
   loadPicMainDiv.className = 'cardLayout2';
   const img = document.createElement('img');
   const header = document.createElement('h3');
@@ -11,6 +17,7 @@ function loadPicture() {
   loadPicMainDiv.appendChild(img);
 
   document.getElementsByTagName('body')[0].appendChild(loadPicMainDiv);
+  document.getElementsByTagName('body')[0].appendChild(footer);
 }
 
 loadPicture();
