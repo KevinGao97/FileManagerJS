@@ -335,7 +335,8 @@
 
       //Rename the element in the DOM
       EleName.firstChild.textContent = newElementName;
-      //console.log('Renamed Folder');
+      EleName.id = newElementName;
+      console.log(EleName.id);
 
       //If the Element is a file
     } else if (EleName && EleName.className == 'file') {

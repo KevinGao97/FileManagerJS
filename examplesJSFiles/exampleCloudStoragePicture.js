@@ -4,7 +4,7 @@ function loadPicture() {
   const img = document.createElement('img');
   const header = document.createElement('h3');
   header.className = 'defaultHeader2';
-  header.textContent = 'Code Used to create this example:';
+  header.textContent = 'Code used to create this example:';
   img.src = '../img/CloudStorageExampleCode.PNG';
   img.className = 'defaultImage';
   loadPicMainDiv.appendChild(header);
