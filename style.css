@@ -4,7 +4,7 @@ body {
 }
 
 .main {
-  border-radius: 2px;
+  border-radius: 1rem;
   box-shadow: 0 0 50px rgba(114, 152, 221, 0.335);
   margin: 1rem;
   padding: 1rem;
