@@ -336,7 +336,7 @@
       //Rename the element in the DOM
       EleName.firstChild.textContent = newElementName;
       EleName.id = newElementName;
-      console.log(EleName.id);
+      //console.log(EleName.id);
 
       //If the Element is a file
     } else if (EleName && EleName.className == 'file') {
@@ -349,6 +349,7 @@
 
       //Rename the element in the DOM
       EleName.firstChild.textContent = newElementName;
+      EleName.id = newElementName;
       //console.log('renaming file');
     } else {
       alert('The File/Folder does not exist');
