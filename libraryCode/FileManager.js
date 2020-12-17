@@ -400,7 +400,11 @@
   function moveElements(elementName, folderName) {
     const checkEleName = document.getElementById(elementName);
     const checkFolderName = document.getElementById(folderName);
-    if (checkEleName && checkFolderName) {
+    if (
+      checkEleName &&
+      checkFolderName &&
+      checkFolderName.className == 'folder'
+    ) {
       //Update the file/folder new location in the DOM
 
       //If the user wanted to move to the root directory
