@@ -6,7 +6,7 @@ function loadPicture() {
   header.className = 'defaultHeader2';
   header.textContent = 'Code Used to create this example:';
   img.src = '../img/CloudStorageExampleCode.PNG';
-  img.className = 'defaultImage3';
+  img.className = 'defaultImage';
   loadPicMainDiv.appendChild(header);
   loadPicMainDiv.appendChild(img);
 

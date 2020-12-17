@@ -6,7 +6,7 @@ function loadPicture() {
   header.className = 'defaultHeader2';
   header.textContent = 'Code Used to create this example:';
   img.src = '../img/SourceControlExampleCode.PNG';
-  img.className = 'defaultImage3';
+  img.className = 'defaultImage';
   loadPictureMainDiv.appendChild(header);
   loadPictureMainDiv.appendChild(img);
 
