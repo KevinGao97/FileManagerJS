@@ -262,7 +262,10 @@
     files.push(file);
     //console.log(files);
 
+    //Create the DOM elements
     const fileInfo = document.createTextNode(file.userSpecifiedName);
+    //console.log(files);
+
     const fileOriginalName = document.createTextNode('---' + file.fileName);
 
     li.appendChild(fileInfo);
@@ -271,9 +274,12 @@
     li.id = file.userSpecifiedName;
     li.className = 'file';
     li.style.color = file.color;
+
+    //If the user wishes to add the File to the 'root' directory.
     if (file.folderId === 'root') {
       document.getElementsByClassName('root')[0].appendChild(li);
     } else {
+      //Add the File to the user specified folder by that folder name.
       document.getElementById('folder' + file.folderId).appendChild(li);
     }
   }
@@ -287,6 +293,7 @@
     folders.push(folder);
     //console.log(folders);
 
+    //Create the DOM elements
     const folderName = document.createTextNode(folder.name);
     li.appendChild(folderName);
     li.appendChild(ul);
@@ -297,6 +304,7 @@
     ul.id = 'folder' + folder.name;
     //console.log(folders);
 
+    //If the user wishes to add the Folder to the 'root' directory.
     if (folder.parentFolderName == 'root') {
       document.getElementsByClassName('root')[0].appendChild(li);
     } else {
@@ -304,11 +312,7 @@
         .getElementById('folder' + folder.parentFolderName)
         .appendChild(li);
     }
-    addCollapsingEffect();
-  }
-
-  //Adds in the expanding and expanding effect of folders during an onClick Event using the slideToggle effect in JQuery
-  function addCollapsingEffect() {
+    //Adds in the expanding and expanding effect of folders during an onClick Event using the slideToggle effect in JQuery
     $('li > ul').each(function () {
       const parent = $(this).parent();
       $(this).parent().wrapInner("<a href='#' />");
@@ -323,7 +327,7 @@
     });
   }
 
-  //Rename a folder
+  //Rename a File or Folder
   function renameElement(oldElementName, newElementName) {
     const EleName = document.getElementById(oldElementName);
     //If the Element is a folder
@@ -357,7 +361,7 @@
     }
   }
 
-  //delete a folder or file Node
+  //Delete a Folder or File
   function deleteElement(userElementName) {
     const checkEleName = document.getElementById(userElementName);
     if (checkEleName) {
@@ -396,7 +400,7 @@
     }
   }
 
-  //Move around a folder or file in the file structure
+  //Move around a Folder or File to another existing Folder
   function moveElements(elementName, folderName) {
     const checkEleName = document.getElementById(elementName);
     const checkFolderName = document.getElementById(folderName);
@@ -426,7 +430,7 @@
     }
   }
 
-  //Restores or permanently deletes an Element
+  //Restores or permanently deletes a File or Folder after calling the deleteElement Function
   function restoreElement(elementName) {
     //Creates the initial Restore Location at the bottom
     const tempDiv = document.createElement('div');
@@ -525,8 +529,6 @@
   global.initFileManagerJS = global.initFileManagerJS || initFileManagerJS;
   global.addFile = global.addFile || addFile;
   global.addNestedFolder = global.addNestedFolder || addNestedFolder;
-  global.addCollapsingEffect =
-    global.addCollapsingEffect || addCollapsingEffect;
   global.renameElement = global.renameElement || renameElement;
   global.deleteElement = global.deleteElement || deleteElement;
   global.changeFileColor = global.changeFileColor || changeFileColor;
