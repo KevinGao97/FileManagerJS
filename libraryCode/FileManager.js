@@ -111,6 +111,9 @@
       if (!checkFolderExists) {
         alert('The following folder does not exist');
         return;
+      } else if (checkFolderExists.className === 'file') {
+        alert('Cannot add a file inside another file');
+        return;
       }
 
       //Add to global file array
@@ -149,6 +152,16 @@
       const folderId = document.getElementById('folderId2').value;
       const userFolderNameNested = document.getElementById('folderName2').value;
 
+      //Check if the folder is an existing folder in the DOM
+      const checkFolderExist = document.getElementById(folderId);
+
+      if (checkFolderExist === null) {
+        alert('The following parent folder does not exist');
+        return;
+      } else if (checkFolderExist.className === 'file') {
+        alert('Cannot add a folder inside a file');
+        return;
+      }
       //Checks if there is a folder with the same name
       const checkFolderName = document.getElementById(userFolderNameNested);
       if (checkFolderName) {
@@ -413,14 +426,15 @@
     const checkFolderName = document.getElementById(folderName);
 
     if (
-      checkEleName &&
-      checkFolderName &&
-      checkFolderName.className == 'folder'
+      (checkEleName &&
+        checkFolderName &&
+        checkFolderName.className == 'folder') ||
+      (checkEleName && checkFolderName && checkFolderName.id == 'root')
     ) {
       //Update the file/folder new location in the DOM.
 
       //If the user wanted to move to the root directory.
-      if (document.getElementById('folder' + folderName) == null) {
+      if (checkFolderName.id === 'root') {
         document.getElementById('root').appendChild(checkEleName);
       } else {
         //If the user wanted to move to another folder.
