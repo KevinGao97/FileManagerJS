@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FileManagerJS</title>
+
+  <!--- Load in the CSS file  -->
+  <link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+  <div class='navBar'>
+    <ul> 
+      <li ><a href='../index.html'><span class="Logo">FileManagerJS</span></a></li>
+      <li><a href='gettingStarted.html'><span>Getting Started</span></a></li>
+      <li><a href='apiPage.html'><span>API Page</span></a></li>
+      <li><a href='explanationUI.html'><span>Explaination of the UI</span></a></li>
+      <li><a href='../examplePages/exampleCloudStorage.html'><span>Cloud Storage Example</span></a></li>
+      <li><a href='../examplePages/exampleSourceControl.html'><span>Source Control Example</span></a></li>
+      <li><a href='https://github.com/csc309-fall-2020/js-library-gaozi2'><span>GitHub</span></a></li>
+  
+    </ul>
+  </div>
+
+  
+  <div>
+   
+    <div class="cardLayout2">
+      <h3 class="defaultHeader">Object Constructor API Functions</h3>
+      <p class="defaultParagraph">Below are all the Object Constructor functions.</p>
+    </div>
+    
+
+    <div class="cardLayout">
+      <h4 class="defaultHeader"><code>FileCreator(fileName, size, userSpecifiedName, folderId, color)</code></h4>
+      <h5 class="defaultHeader"><u>Parameters:</u></h5>
+      <p class="defaultParagraph"><code>fileName</code>: The name of the file as a string format.</p>
+      <p class="defaultParagraph"><code>size</code>: The size of the file in bytes.</p>
+      <p class="defaultParagraph"><code>userSpecifiedName</code>: The user specified name of the file as a string format.</p>
+      <p class="defaultParagraph"><code>folderId</code>: The name of the folder where the file will be stored into as a string format.</p>
+      <p class="defaultParagraph"><code>color</code>: The desired color of the file as a string format. If no color is specified, it will default to the color black if no value is provided.</p>
+      <h5 class="defaultHeader"><u>Return Type:</u></h5>
+      <p class="defaultParagraph">A File Object.</p>
+      <h5 class="defaultHeader"><u>Description:</u></h5>
+      <p class="defaultParagraph">This function creates a File Object based on the specified parameter values.</p>
+    </div>
+   
+    <div class="cardLayout">
+      <h4 class="defaultHeader"><code>FolderCreator(name, parentFolderName)</code></h4>
+      <h5 class="defaultHeader"><u>Parameters:</u></h5>
+      <p class="defaultParagraph"><code>name</code>: The name of the folder as a string format.</p>
+      <p class="defaultParagraph"><code>parentFolderName</code>: The name of the folder where this new folder will be stored as a string format. The top level direction is known as 'root'.</p>
+      <h5 class="defaultHeader"><u>Return Type:</u></h5>
+      <p class="defaultParagraph">A Folder Object.</p>
+      <h5 class="defaultHeader"><u>Description:</u></h5>
+      <p class="defaultParagraph">This function creates a Folder Object based on the specified parameter values.</p>
+    </div>
+    
+
+    <br>
+    <div class="cardLayout2">
+      <h3 class="defaultHeader">DOM Manipulation API Functions</h3>
+      <p class="defaultParagraph">Below are all the DOM Manipulation functions.</p>
+    </div>
+   
+
+    <div class="cardLayout">
+      <h4 class="defaultHeader"><code>initFileManagerJS()</code></h4>
+      <h5 class="defaultHeader"><u>Parameters:</u></h5>
+      <p class="defaultParagraph">None.</p>
+      <h5 class="defaultHeader"><u>Return Type:</u></h5>
+      <p class="defaultParagraph">void.</p>
+      <h5 class="defaultHeader"><u>Description:</u></h5>
+      <p class="defaultParagraph">This function initializes all the functionality components in FileManagerJS and needs to to be called before calling other functions in the library.</p>
+    </div>
+    
+
+    <div class="cardLayout">
+      <h4 class="defaultHeader"><code>addFile(File)</code></h4>
+      <h5 class="defaultHeader"><u>Parameters:</u></h5>
+      <p class="defaultParagraph"><code>File</code>: The File object that was created using the <code>FileCreator</code> function.</p>
+      <h5 class="defaultHeader"><u>Return Type:</u></h5>
+      <p class="defaultParagraph">void.</p>
+      <h5 class="defaultHeader"><u>Description:</u></h5>
+      <p class="defaultParagraph">This function takes in an existing File object, adds this object to the global files array, and displays a file's name, the user specified name, and the specified color in the front-end.</p>
+    </div>
+   
+
+    <div class="cardLayout">
+      <h4 class="defaultHeader"><code>addNestedFolder(Folder)</code></h4>
+      <h5 class="defaultHeader"><u>Parameters:</u></h5>
+      <p class="defaultParagraph"><code>Folder</code>: The Folder object that was created using the <code>FolderCreator</code> function.</p>
+      <h5 class="defaultHeader"><u>Return Type:</u></h5>
+      <p class="defaultParagraph">void.</p>
+      <h5 class="defaultHeader"><u>Description:</u></h5>
+      <p class="defaultParagraph">This function takes in an existing Folder object, adds this object to the global folders array, and displays a folder's name in the front-end.</p>
+    </div>
+    
+
+    <div class="cardLayout">
+      <h4 class="defaultHeader"><code>renameElement(oldElementName, newElementName)</code></h4>
+      <h5 class="defaultHeader"><u>Parameters:</u></h5>
+      <p class="defaultParagraph"><code>oldElementName</code>: The name of the existing file or folder as a string format.</p>
+      <p class="defaultParagraph"><code>newElementName</code>: The new name of the file or folder as a string format.</p>
+      <h5 class="defaultHeader"><u>Return Type:</u></h5>
+      <p class="defaultParagraph">boolean.</p>
+      <h5 class="defaultHeader"><u>Description:</u></h5>
+      <p class="defaultParagraph">This function takes the name of an existing file or folder and modifies the name to a new name, as specified in the newElementName parameter.</p>
+      <p class="defaultParagraph">This function will also modify either the folder or file name in their respective arrays to the new name.</p>
+    </div>
+    
+
+    <div class="cardLayout">
+      <h4 class="defaultHeader"><code>deleteElement(userElementName)</code></h4>
+      <h5 class="defaultHeader"><u>Parameters:</u></h5>
+      <p class="defaultParagraph"><code>userElementName</code>: The name to select the existing file or folder for deletion. This should be formatted as a string.</p>
+      <h5 class="defaultHeader"><u>Return Type:</u></h5>
+      <p class="defaultParagraph">boolean.</p>
+      <h5 class="defaultHeader"><u>Description:</u></h5>
+      <p class="defaultParagraph">This function takes the name of an existing file or folder and deletes that Object from both the DOM and its respective arrays.</p>
+    </div>
+   
+
+    <div class="cardLayout">
+      <h4 class="defaultHeader"><code>changeFileColor(fileName, newColor)</code></h4>
+      <h5 class="defaultHeader"><u>Parameters:</u></h5>
+      <p class="defaultParagraph"><code>fileName</code>: The name of the existing file as a string format.</p>
+      <p class="defaultParagraph"><code>newColor</code>: The new color name as a string format.</p>
+      <h5 class="defaultHeader"><u>Return Type:</u></h5>
+      <p class="defaultParagraph">void.</p>
+      <h5 class="defaultHeader"><u>Description:</u></h5>
+      <p class="defaultParagraph">This function takes the name of an existing file and modifies its color from both the DOM and its respective arrays to the newColor parameter value.</p>
+      <p class="defaultParagraph">Note: If an invalid color name is given, the color will not be modified.</p>
+      
+    </div>
+   
+
+    <div class="cardLayout">
+      <h4 class="defaultHeader"><code>moveElements(elementName, folderName)</code></h4>
+      <h5 class="defaultHeader"><u>Parameters:</u></h5>
+      <p class="defaultParagraph"><code>elementName</code>: The name of the existing file or folder as a string format.</p>
+      <p class="defaultParagraph"><code>folderName</code>: The name of the existing destination folder as a string format.</p>
+      <h5 class="defaultHeader"><u>Return Type:</u></h5>
+      <p class="defaultParagraph">void.</p>
+      <h5 class="defaultHeader"><u>Description:</u></h5>
+      <p class="defaultParagraph">This function takes the name of an existing file or folder and moves that Object to the new folder on the DOM. </p>
+      <p class="defaultParagraph">Note: The new folder must already exist on the DOM.</p>
+    </div>
+   
+
+  </div>
+
+  <footer>
+    <p class="defaultParagraph">FileManagerJS v1.0. Created by: Kevin Gao</p>
+  </footer>
+ 
+
+ 
+</body>
+</html>

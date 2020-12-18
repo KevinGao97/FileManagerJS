@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FileManagerJS</title>
+
+
+  <!--- Load in the CSS file  -->
+  <link rel="stylesheet" href="../style.css">
+
+ 
+
+
+</head>
+<body>
+
+  <div class='navBar'>
+    <ul> 
+      <li ><a href='../index.html'><span class="Logo">FileManagerJS</span></a></li>
+      <li><a href='gettingStarted.html'><span>Getting Started</span></a></li>
+      <li><a href='apiPage.html'><span>API Page</span></a></li>
+      <li><a href='explanationUI.html'><span>Explaination of the UI</span></a></li>
+      <li><a href='../examplePages/exampleCloudStorage.html'><span>Cloud Storage Example</span></a></li>
+      <li><a href='../examplePages/exampleSourceControl.html'><span>Source Control Example</span></a></li>
+      <li><a href='https://github.com/csc309-fall-2020/js-library-gaozi2'><span>GitHub</span></a></li>
+  
+    </ul>
+    
+  </div>
+
+  
+  <div>
+    <div class="cardLayout">
+      <h3 class="defaultHeader">Upload and Add a New File </h3>
+      <p class="defaultParagraph">This UI Component allows users to upload any file type to the file manager.</p>
+      <h5 class="defaultHeader"><u>Inputs</u></h5>
+      <p class="defaultParagraph"><b>Choose File:</b> Upload the file binary.</p>
+      <p class="defaultParagraph"><b>File Name:</b> Choose the desired name for the uploaded file.</p>
+      <p class="defaultParagraph"><b>Add to Folder Name:</b> Add the file to the base('root') directory or to an existing folder by entering its name.</p>
+      <p class="defaultParagraph"><b>File Color:</b> Choose a valid CSS color, if this is left empty, the color is defaulted to black.</p>
+      <p class="defaultParagraph"><b><u>Note:</u></b> All entered names must be exact (The fields are case sensitive).</p>
+      <img class="defaultImage" src='../img/uploadFile.PNG'>
+    </div>
+    
+    
+    
+  </div>
+
+  <div class="cardLayout">
+    <h3 class="defaultHeader">Add a New Folder </h3>
+    <p class="defaultParagraph">This UI Component allows users to add a new folder to the file manager. Users may add folders to the base('root') directory or inside another existing folder.</p>
+    <h5 class="defaultHeader"><u>Inputs</u></h5>
+    <p class="defaultParagraph"><b>Folder Name:</b> The existing folder name.</p>
+    <p class="defaultParagraph"><b>Parent Folder Name:</b> The existing parent folder name ('root' for the top-level folder).</p>
+    <p class="defaultParagraph"><b><u>Note:</u></b> All entered names must be exact (The fields are case sensitive).</p>
+    <img class="defaultImage3" src='../img/AddFolder.PNG'>
+  </div>
+
+  <div class="cardLayout">
+    <h3 class="defaultHeader">Rename a File or Folder </h3>
+    <p class="defaultParagraph">This UI Component allows users to rename an existing file or folder to another name. </p>
+    <h5 class="defaultHeader"><u>Inputs</u></h5>
+    <p class="defaultParagraph"><b>Old File/Folder Name:</b> The existing file or folder name.</p>
+    <p class="defaultParagraph"><b>New File/Folder Name:</b> The new desired name for the file or folder.</p>
+    <p class="defaultParagraph"><b><u>Note:</u></b> All entered names must be exact (The fields are case sensitive).</p>
+    <img class="defaultImage3" src='../img/renameElement.PNG'>
+  </div>
+
+  <div class="cardLayout">
+    <h3 class="defaultHeader">Deleting a File or Folder </h3>
+    <p class="defaultParagraph">This UI Component allows users to delete an existing file or folder. The deleted file/folder is moved into the 'trash' section at the bottom of the File Manager.</p>
+    <h5 class="defaultHeader"><u>Inputs</u></h5>
+    <p class="defaultParagraph"><b>File/Folder Name:</b> The existing file or folder name.</p>
+    <p class="defaultParagraph"><b><u>Note:</u></b> The entered name must be exact (The fields are case sensitive).</p>
+    <img class="defaultImage3" src='../img/deleteElement.PNG'>
+  </div>
+
+
+  <div class="cardLayout">
+    <h3 class="defaultHeader">Change Color of a File </h3>
+    <p class="defaultParagraph">This UI Component allows users to change the color of any file, provided that it is a valid css color.</p>
+    <h5 class="defaultHeader"><u>Inputs</u></h5>
+    <p class="defaultParagraph"><b>File Name:</b> Choose the existing file by its name.</p>
+    <p class="defaultParagraph"><b>New File Color:</b> Choose a a new valid CSS color.</p>
+    <p class="defaultParagraph"><b><u>Note:</u></b> The entered name must be exact (The fields are case sensitive).</p>
+    <img class="defaultImage3" src='../img/colorChangeFile.PNG'>
+  
+  </div>
+ 
+  <div class="cardLayout">
+    <h3 class="defaultHeader">Move a File or Folder to another Folder </h3>
+    <p class="defaultParagraph">This UI Component allows users to move an existing file or folder to another folder or into the top level, base('root') directory.</p>
+    <h5 class="defaultHeader"><u>Inputs</u></h5>
+    <p class="defaultParagraph"><b>File/Folder Name:</b> The existing file or folder name.</p>
+    <p class="defaultParagraph"><b>Folder Name:</b> The existing folder name that the user wishes to place their contents (file or folder) in.</p>
+    <p class="defaultParagraph"><b><u>Note:</u></b> All entered names must be exact (The fields are case sensitive).</p>
+    <img class="defaultImage3" src='../img/moveElement.PNG'>
+  </div>
+
+  
+ 
+  
+  <div class="cardLayout">
+    <h3 class="defaultHeader">Restoring a File or Folder </h3>
+    <p class="defaultParagraph">This UI Component gives users an option of restoring or deleting permanently items in their 'trash' section, located at the bottom of the file manager.</p>
+    <p class="defaultParagraph">A restored File or Folder will be added back to their original location in the File Manager, with its contents intact (if applicable).</p>
+    <h5 class="defaultHeader"><u>Inputs</u></h5>
+    <p class="defaultParagraph"><b>Undo Delete:</b> Restores back either the file or folder to its original location.</p>
+    <p class="defaultParagraph"><b>Delete Forever:</b> Deletes permanently the file or folder.</p>
+    <img class="defaultImage2" src='../img/restoreElement.PNG'>
+  </div>
+
+  <footer>
+    <p class="defaultParagraph">FileManagerJS v1.0. Created by: Kevin Gao</p>
+  </footer>
+ 
+</body>
+
+</html>

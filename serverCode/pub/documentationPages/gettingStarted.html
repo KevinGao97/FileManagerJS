@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FileManagerJS</title>
+
+  <!--- Load in the CSS file  -->
+  <link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+  <div class='navBar'>
+    <ul> 
+        <li ><a href='../index.html'><span class="Logo">FileManagerJS</span></a></li>
+        <li><a href='gettingStarted.html'><span>Getting Started</span></a></li>
+        <li><a href='apiPage.html'><span>API Page</span></a></li>
+        <li><a href='explanationUI.html'><span>Explaination of the UI</span></a></li>
+        <li><a href='../examplePages/exampleCloudStorage.html'><span>Cloud Storage Example</span></a></li>
+        <li><a href='../examplePages/exampleSourceControl.html'><span>Source Control Example</span></a></li>
+        <li><a href='https://github.com/csc309-fall-2020/js-library-gaozi2'><span>GitHub</span></a></li>
+  
+    </ul>
+  </div>
+
+  <div>
+    <div class="cardLayout2">
+      <h3 class="defaultHeader">FileManagerJS</h3>
+      <p class="defaultParagraph">Created by: Kevin Gao</p>
+      <p class="defaultParagraph">FileManagerJS is a JavaScript library that enables developers to implement an attractive front-end file management layout seamlessly.</p>
+      <p class="defaultParagraph">The library includes the optional addition, through input fields and buttons, of user interactive components. </p>
+
+    </div>
+
+    <div class="cardLayout2">
+      <h3 class="defaultHeader">Scripts To Include for Getting Started</h3>
+      <p class="defaultParagraph">To get started with using the FileManagerJS library, please include the following files:</p>
+    </div>
+    
+    <div class="cardLayout">
+      <p class="defaultParagraph"><b>FileManager.js:</b> Below is the main file that includes all the functionality aspects found in the library.</p>
+      <p class="defaultParagraph"><xmp class="defaultXMP"><script defer type="text/javascript" src='FileManager.js'></script></xmp></p>
+      <h5 class="defaultHeader"><b>Note:</b> Please call the function: <code>initFileManagerJS()</code> as the first step in your JS file to initialize all the library after importing this file.</h5>
+    </div>
+    
+    <div class="cardLayout">
+      <p class="defaultParagraph"><b>style.css:</b> Below is the main CSS file for the FileManagerJS library.</p>
+      <p class="defaultParagraph"><xmp class="defaultXMP"><link rel="stylesheet" type="text/css" href="./style.css"></xmp></p>  
+    </div>
+
+    <div class="cardLayout">
+      <p class="defaultParagraph"><b>JQuery:</b> Below is the JQuery library script needed by the library.</p>
+      <p class="defaultParagraph"><xmp class="defaultXMP"><script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script></xmp></p>  
+    </div>
+
+    <div class="cardLayout">
+      <p class="defaultParagraph"><b>home.js (Optional):</b> Below, is the file that adds all the user interaction components to the FileManagerJS library.</p>
+      <p class="defaultParagraph">Importing this file is not necessary if the UI is not required as part of the application.</p>  
+      <p class="defaultParagraph"><xmp class="defaultXMP"><script defer type="text/javascript" src='home.js'></script></xmp></p>
+    </div>
+
+    <div class="cardLayout">
+    <p class="defaultParagraph"><b>To load all 4 files:</b> Please use the following the format below in the head of the HTML.</p>
+    <xmp class="defaultXMP">
+<!--- Load in JQuery   --->
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!--- Load in the File Manager CSS file  -->
+<link rel="stylesheet" type="text/css" href="./style.css">
+
+<!--- Load in HomeJS  -->
+<script defer type="text/javascript" src='home.js'></script> 
+
+<!--- Load in FileManagerJS  -->
+<script defer type="text/javascript" src='FileManager.js'></script>
+    </xmp>
+    </div>
+ 
+
+    
+    <div class="cardLayout2">
+      <h3 class="defaultHeader">Code Snippet to Get Started</h3>
+      <img class="defaultImage3" src="../img/startingExample.PNG">
+      <h4 class="defaultHeader">In plain text:</h4>
+      <xmp class="defaultXMP">
+  //Initializes the Library
+  initFileManagerJS();
+  
+  function createStartingExample() {
+    //Creates 3 Folder Objects
+    const Folder1 = FolderCreator('Folder1', 'root');
+    const Folder2 = FolderCreator('Folder2', 'root');
+    const Folder3 = FolderCreator('Folder3', 'root');
+  
+    //Creates 3 File Objects
+    const File1 = new FileCreator(
+      'File1.jpeg',
+      75655,
+      'Picture1',
+      'Folder1',
+      'green'
+    );
+    const File2 = new FileCreator(
+      'File2.txt',
+      12032,
+      'Report1',
+      'Folder2',
+      'red'
+    );
+    const File3 = new FileCreator(
+      'File3.pdf',
+      8513,
+      'Document1',
+      'Folder3',
+      'purple'
+    );
+  
+    //Adds both the Folder and File Objects to the DOM
+    addNestedFolder(Folder1);
+    addNestedFolder(Folder3);
+    addNestedFolder(Folder2);
+    addFile(File1);
+    addFile(File2);
+    addFile(File3);
+  
+    //Rename a File name to 'PictureFile'
+    renameElement(File1.userSpecifiedName, 'PictureFile');
+  
+    //Move File 2 into Folder 3
+    moveElements(File2.userSpecifiedName, Folder3.name);
+  }
+  
+  createStartingExample();
+      </xmp>
+    </div>
+  </div>
+  <footer>
+    <p class="defaultParagraph">FileManagerJS v1.0. Created by: Kevin Gao</p>
+  </footer>
+</body>
