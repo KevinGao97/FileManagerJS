@@ -10,7 +10,7 @@ function createAllInteractionFields() {
   addNewFileForm.id = 'addFileForm';
   const label = document.createElement('label');
   label.className = 'defaultLabel';
-  label.innerHTML = 'Upload a new File:';
+  label.innerHTML = 'Upload and Add a new File:';
   addNewFileForm.appendChild(label);
 
   const userFile = document.createElement('input');
